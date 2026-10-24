@@ -14,6 +14,14 @@ const { hasGemini, modelName } = await import('./gemini.js');
 const { BADGES, STAGES, TITLES, POINTS } = await import('./tools.js');
 
 const app = express();
+// CORS: lets a front end hosted elsewhere (e.g. Firebase Hosting) call this API and load media.
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'content-type');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+  if (req.method === 'OPTIONS') return res.sendStatus(204);
+  next();
+});
 app.use(express.json({ limit: '15mb' }));
 app.use('/media', express.static(MEDIA_DIR, { maxAge: '1h' }));
 

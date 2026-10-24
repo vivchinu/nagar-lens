@@ -107,8 +107,11 @@ const scene = new SceneManager($('scene'), {
 scene.paused = true;
 
 // ---------- API ----------
+// Empty = same origin. Set VITE_API_BASE at build time to host the front end separately (e.g. Firebase Hosting).
+const API_BASE = (import.meta.env.VITE_API_BASE || '').replace(/\/$/, '');
+const url = (p) => (typeof p === 'string' && /^\/(api|media)\//.test(p) ? API_BASE + p : p);
 async function api(path, body) {
-  const res = await fetch(path, body ? { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) } : {});
+  const res = await fetch(url(path), body ? { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) } : {});
   const j = await res.json();
   if (!res.ok) throw new Error(j.error || res.statusText);
   return j;
@@ -116,7 +119,7 @@ async function api(path, body) {
 
 // POST with NDJSON streaming; calls onEvent for each tool event and resolves with the final 'done' payload.
 async function streamPost(path, body, onEvent) {
-  const res = await fetch(`${path}?stream=1`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
+  const res = await fetch(url(`${path}?stream=1`), { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
   if (!res.ok || !res.body) throw new Error(`Server error ${res.status}`);
   const reader = res.body.getReader();
   const dec = new TextDecoder();
@@ -214,7 +217,7 @@ function cardHTML(c, { officer = false } = {}) {
   }
   return `<div class="card c-card pressable" role="button" tabindex="0" data-act="ticket" data-id="${c.id}">
     <div class="c-top">
-      <img class="thumb" src="${esc(c.photoUrl || '')}" alt="" loading="lazy" />
+      <img class="thumb" src="${esc(url(c.photoUrl) || '')}" alt="" loading="lazy" />
       <div class="grow">
         <div class="c-title">${esc(desc.toLowerCase().startsWith(label.split(' ').pop().toLowerCase()) || desc.toLowerCase().startsWith(label.toLowerCase().split(' ')[0]) ? desc : `${label} · ${desc}`)}</div>
         <div class="c-sub mono">${esc(c.id)} · Ward ${w?.number ?? ''}</div>
@@ -489,7 +492,7 @@ async function pickPhoto(src) {
 async function downscale(src, max = 1024) {
   let img;
   if (typeof src === 'string') {
-    img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => rej(new Error('image load failed')); i.src = src; });
+    img = await new Promise((res, rej) => { const i = new Image(); i.crossOrigin = 'anonymous'; i.onload = () => res(i); i.onerror = () => rej(new Error('image load failed')); i.src = src; });
   } else img = await createImageBitmap(src);
   const k = Math.min(1, max / Math.max(img.width, img.height));
   const c = document.createElement('canvas');
@@ -503,7 +506,7 @@ async function downscale(src, max = 1024) {
   t.getContext('2d').drawImage(c, 0, 0, t.width, t.height);
   return { dataUrl, thumb: t.toDataURL('image/jpeg', 0.7) };
 }
-const samplePhoto = async (kind) => ({ ...(await downscale(`/media/seed/${kind}.svg`, 900)), name: `sample-${kind}.jpg` });
+const samplePhoto = async (kind) => ({ ...(await downscale(url(`/media/seed/${kind}.svg`), 900)), name: `sample-${kind}.jpg` });
 
 async function runDraft(photo) {
   R.photo = photo;
@@ -598,7 +601,7 @@ function ticketHTML() {
   }
   return `<div class="sheet-h"><h2>${ic} ${esc(label)}</h2>${officer ? '<span class="mode-pill">Officer</span>' : ''}<button class="x-btn" data-act="close" aria-label="Close">${icon('x')}</button></div>
     <div class="photo">
-      <img src="${esc(view === 'after' ? t.afterPhotoUrl : t.photoUrl)}" alt="${view} photo" />
+      <img src="${esc(url(view === 'after' ? t.afterPhotoUrl : t.photoUrl))}" alt="${view} photo" />
       ${hasAfter ? `<div class="ba"><button class="${view === 'before' ? 'on' : ''}" data-act="ba" data-id="${t.id}" data-v="before">Before</button><button class="${view === 'after' ? 'on' : ''}" data-act="ba" data-id="${t.id}" data-v="after">After</button></div>` : ''}
       <span class="cap">${view === 'after' ? 'After repair' : 'Reported photo'}</span>
     </div>
