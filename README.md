@@ -20,6 +20,17 @@ Open **https://localhost:5173** on the laptop. Without a key, the app runs in **
 
 Get a key from https://aistudio.google.com/apikey. The default model is `gemini-2.5-flash`; override it with `GEMINI_MODEL`.
 
+## Deploy on Google Cloud Run
+
+The repo has a `Dockerfile` (builds the client, runs Express on `$PORT`).
+
+**From the console (no CLI):** Cloud Run → **Deploy container** → **Service** → **Continuously deploy from a repository** → connect GitHub → `vivchinu/nagar-lens`, branch `main`, build type **Dockerfile** → region `asia-south1` → **Allow unauthenticated invocations** → under *Variables & secrets* add `GEMINI_API_KEY` → **Create**.
+
+**With gcloud:**
+```bash
+gcloud run deploy nagar-lens --source . --region asia-south1 --allow-unauthenticated --set-env-vars GEMINI_API_KEY=YOUR_KEY
+```
+
 ## Deploy online (Render, free)
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/vivchinu/nagar-lens)
