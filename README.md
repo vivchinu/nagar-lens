@@ -20,6 +20,22 @@ Open **https://localhost:5173** on the laptop. Without a key, the app runs in **
 
 Get a key from https://aistudio.google.com/apikey. The default model is `gemini-2.5-flash`; override it with `GEMINI_MODEL`.
 
+## Deploy on Firebase Hosting + Cloud Run
+
+`firebase.json` serves the built client from Firebase Hosting and forwards `/api/**` and `/media/**` to the Cloud Run service `nagar-lens` (asia-south1). Run these in Cloud Shell:
+
+```bash
+git clone https://github.com/vivchinu/nagar-lens && cd nagar-lens
+PROJECT=your-project-id
+gcloud config set project $PROJECT
+gcloud services enable run.googleapis.com cloudbuild.googleapis.com artifactregistry.googleapis.com firebasehosting.googleapis.com
+gcloud run deploy nagar-lens --source . --region asia-south1 --allow-unauthenticated --quiet
+npm --prefix client ci && npm --prefix client run build
+firebase projects:addfirebase $PROJECT   # once, if the project isn't a Firebase project yet
+firebase deploy --only hosting --project $PROJECT
+```
+The app is then live at `https://$PROJECT.web.app`. Add `GEMINI_API_KEY` as an env var on the Cloud Run service to switch on Gemini.
+
 ## Deploy on Google Cloud Run
 
 The repo has a `Dockerfile` (builds the client, runs Express on `$PORT`).
