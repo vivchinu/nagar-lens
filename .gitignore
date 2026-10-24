@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+server/media/uploads/*
+!server/media/uploads/.gitkeep
+.claude/
+*.log

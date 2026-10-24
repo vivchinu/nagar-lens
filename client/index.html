@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f4f1eb" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Nagar Lens</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='34' fill='none' stroke='%23f07f1d' stroke-width='14'/><circle cx='50' cy='50' r='12' fill='%231a2542'/></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- #overlay is the WebXR DOM-overlay root: everything visible in AR lives inside it. -->
+    <div id="overlay">
+      <div id="app">
+        <header class="appbar">
+          <div class="brand">
+            <span class="logo" aria-hidden="true"></span>
+            <div><b>Nagar Lens</b><small id="brandSub">AMC civic agent</small></div>
+          </div>
+          <button id="meChip" class="me-chip" aria-label="Your profile">
+            <span class="av" id="meAv">R</span>
+            <span class="pts" id="mePts">🏅 0</span>
+          </button>
+        </header>
+        <main id="screen" class="screen"></main>
+        <nav class="tabbar" aria-label="Main">
+          <button data-tab="home" class="tab"></button>
+          <button data-tab="track" class="tab"></button>
+          <button id="fab" class="fab" aria-label="Report an issue"></button>
+          <button data-tab="honours" class="tab"></button>
+          <button data-tab="me" class="tab"></button>
+        </nav>
+      </div>
+
+      <section id="arView" class="arview hidden" aria-label="AR ward map">
+        <div class="ar-stage"><canvas id="scene"></canvas></div>
+        <div class="ar-top">
+          <button id="arClose" class="glass-btn">✕&nbsp; Close</button>
+          <div id="arNote" class="ar-note"></div>
+        </div>
+        <div id="arHint" class="ar-hint hidden"></div>
+        <div class="ar-bottom">
+          <div class="ar-card">
+            <div class="ar-summary" id="arSummary"></div>
+            <div class="legend" id="legend"></div>
+          </div>
+          <div class="ar-actions" id="arActions"></div>
+        </div>
+      </section>
+
+      <div id="sheetBackdrop" class="backdrop hidden"></div>
+      <section id="sheet" class="sheet hidden" role="dialog" aria-modal="true"></section>
+      <div id="modal" class="modal hidden" role="dialog" aria-modal="true"></div>
+      <div id="toasts" class="toasts" aria-live="polite"></div>
+    </div>
+
+    <input id="cameraInput" type="file" accept="image/*" capture="environment" hidden />
+    <input id="galleryInput" type="file" accept="image/*" hidden />
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "nagar-lens",
+  "private": true,
+  "scripts": {
+    "setup": "npm install && npm --prefix server install && npm --prefix client install",
+    "dev": "concurrently -k -n server,client -c green,cyan \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
+    "server": "npm --prefix server start",
+    "client": "npm --prefix client run dev",
+    "reset": "npm --prefix server run reset"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

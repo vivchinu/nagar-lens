@@ -1,0 +1,199 @@
+{
+  "meta": {
+    "city": "Ahmedabad",
+    "corporation": "Ahmedabad Municipal Corporation (MOCK)",
+    "nextSeq": 457,
+    "note": "Mock data for the Nagar Lens hackathon demo. Not connected to any real AMC portal."
+  },
+  "wards": [
+    {
+      "id": "W12", "number": 12, "name": "Navrangpura", "zone": "West",
+      "areas": ["Navrangpura", "CG Road", "Gujarat University", "Stadium", "Commerce Six Roads"],
+      "center": { "lat": 23.0375, "lng": 72.5590 },
+      "bbox": { "minLat": 23.028, "maxLat": 23.048, "minLng": 72.548, "maxLng": 72.570 }
+    },
+    {
+      "id": "W10", "number": 10, "name": "Naranpura", "zone": "West",
+      "areas": ["Naranpura", "Ankur", "Sola Road", "Pragatinagar"],
+      "center": { "lat": 23.0585, "lng": 72.5555 },
+      "bbox": { "minLat": 23.049, "maxLat": 23.068, "minLng": 72.543, "maxLng": 72.568 }
+    },
+    {
+      "id": "W21", "number": 21, "name": "Vastrapur", "zone": "North West",
+      "areas": ["Vastrapur", "IIM Road", "Vastrapur Lake", "Drive-in Road"],
+      "center": { "lat": 23.0370, "lng": 72.5290 },
+      "bbox": { "minLat": 23.029, "maxLat": 23.046, "minLng": 72.518, "maxLng": 72.540 }
+    },
+    {
+      "id": "W22", "number": 22, "name": "Satellite", "zone": "South West",
+      "areas": ["Satellite", "Jodhpur", "Shivranjani", "Star Bazaar"],
+      "center": { "lat": 23.0220, "lng": 72.5130 },
+      "bbox": { "minLat": 23.012, "maxLat": 23.029, "minLng": 72.498, "maxLng": 72.528 }
+    },
+    {
+      "id": "W45", "number": 45, "name": "Bopal", "zone": "South West",
+      "areas": ["Bopal", "South Bopal", "Ghuma", "Bopal Crossroads"],
+      "center": { "lat": 23.0330, "lng": 72.4650 },
+      "bbox": { "minLat": 23.015, "maxLat": 23.050, "minLng": 72.445, "maxLng": 72.485 }
+    },
+    {
+      "id": "W18", "number": 18, "name": "Paldi", "zone": "West",
+      "areas": ["Paldi", "Ellisbridge", "Mahalaxmi", "Jalaram"],
+      "center": { "lat": 23.0105, "lng": 72.5650 },
+      "bbox": { "minLat": 23.001, "maxLat": 23.020, "minLng": 72.552, "maxLng": 72.578 }
+    },
+    {
+      "id": "W34", "number": 34, "name": "Maninagar", "zone": "South",
+      "areas": ["Maninagar", "Kankaria", "Jawahar Chowk", "Bhairavnath"],
+      "center": { "lat": 22.9960, "lng": 72.6040 },
+      "bbox": { "minLat": 22.982, "maxLat": 23.008, "minLng": 72.590, "maxLng": 72.620 }
+    },
+    {
+      "id": "W2", "number": 2, "name": "Chandkheda", "zone": "North West",
+      "areas": ["Chandkheda", "Motera", "Visat", "ONGC Circle"],
+      "center": { "lat": 23.1100, "lng": 72.5850 },
+      "bbox": { "minLat": 23.095, "maxLat": 23.125, "minLng": 72.565, "maxLng": 72.605 }
+    }
+  ],
+  "departments": [
+    {
+      "id": "roads", "name": "Roads & Buildings (Pothole Cell)", "short": "Roads Dept",
+      "issueTypes": ["pothole"], "contact": "Er. Mehul Joshi", "slaDays": 7,
+      "crews": ["Road Crew R-3", "Road Crew R-7"]
+    },
+    {
+      "id": "swm", "name": "Solid Waste Management", "short": "Solid Waste Dept",
+      "issueTypes": ["garbage"], "contact": "Smt. Kavita Parmar", "slaDays": 2,
+      "crews": ["SWM Van 14", "SWM Van 22"]
+    },
+    {
+      "id": "streetlights", "name": "Street Lights Department", "short": "Street Lights Dept",
+      "issueTypes": ["streetlight"], "contact": "Shri Rakesh Solanki", "slaDays": 3,
+      "crews": ["Light Crew L-2", "Light Crew L-5"]
+    },
+    {
+      "id": "swd", "name": "Storm Water Drainage", "short": "Storm Water Dept",
+      "issueTypes": ["waterlogging"], "contact": "Er. Farhan Shaikh", "slaDays": 5,
+      "crews": ["SWD Pump Team 5"]
+    }
+  ],
+  "complaints": [
+    {
+      "id": "AMC-W12-0451", "user": "Kabir Mehta", "issueType": "garbage", "severity": "medium",
+      "description": "Overflowing garbage bin near CG Road bus stop.",
+      "ward": "W12", "wardName": "Navrangpura", "department": "swm",
+      "lat": 23.0352, "lng": 72.5601, "approxLocation": false,
+      "photoUrl": "/media/seed/garbage.svg", "afterPhotoUrl": null,
+      "status": "Assigned", "crew": "SWM Van 14",
+      "timeline": [
+        { "stage": "Filed", "at": "2026-10-22T09:12:00.000Z", "by": "Kabir Mehta", "note": "Filed via Nagar Lens AR" },
+        { "stage": "Acknowledged", "at": "2026-10-22T11:40:00.000Z", "by": "AMC Officer", "note": "Forwarded to SWM" },
+        { "stage": "Assigned", "at": "2026-10-23T06:05:00.000Z", "by": "AMC Officer", "note": "SWM Van 14 assigned" }
+      ],
+      "plusOnes": 3, "supporters": ["Riya Shah", "Priya Desai", "Arjun Rathod"],
+      "createdAt": "2026-10-22T09:12:00.000Z", "expectedBy": "2026-10-24T09:12:00.000Z", "verification": null
+    },
+    {
+      "id": "AMC-W22-0452", "user": "Priya Desai", "issueType": "streetlight", "severity": "high",
+      "description": "Street light not working at Shivranjani crossroads, dark junction at night.",
+      "ward": "W22", "wardName": "Satellite", "department": "streetlights",
+      "lat": 23.0215, "lng": 72.5140, "approxLocation": false,
+      "photoUrl": "/media/seed/streetlight.svg", "afterPhotoUrl": null,
+      "status": "In progress", "crew": "Light Crew L-2",
+      "timeline": [
+        { "stage": "Filed", "at": "2026-10-21T18:30:00.000Z", "by": "Priya Desai", "note": "Filed via Nagar Lens AR" },
+        { "stage": "Acknowledged", "at": "2026-10-22T04:00:00.000Z", "by": "AMC Officer", "note": "" },
+        { "stage": "Assigned", "at": "2026-10-22T07:15:00.000Z", "by": "AMC Officer", "note": "Light Crew L-2 assigned" },
+        { "stage": "In progress", "at": "2026-10-23T10:20:00.000Z", "by": "Light Crew L-2", "note": "Replacing LED fixture" }
+      ],
+      "plusOnes": 5, "supporters": [],
+      "createdAt": "2026-10-21T18:30:00.000Z", "expectedBy": "2026-10-24T18:30:00.000Z", "verification": null
+    },
+    {
+      "id": "AMC-W34-0453", "user": "Arjun Rathod", "issueType": "waterlogging", "severity": "high",
+      "description": "Knee-deep water near Kankaria gate after rain, drain blocked.",
+      "ward": "W34", "wardName": "Maninagar", "department": "swd",
+      "lat": 22.9975, "lng": 72.6025, "approxLocation": false,
+      "photoUrl": "/media/seed/waterlogging.svg", "afterPhotoUrl": null,
+      "status": "Filed", "crew": null,
+      "timeline": [
+        { "stage": "Filed", "at": "2026-10-23T15:45:00.000Z", "by": "Arjun Rathod", "note": "Filed via Nagar Lens AR" }
+      ],
+      "plusOnes": 1, "supporters": [],
+      "createdAt": "2026-10-23T15:45:00.000Z", "expectedBy": "2026-10-28T15:45:00.000Z", "verification": null
+    },
+    {
+      "id": "AMC-W21-0454", "user": "Riya Shah", "issueType": "pothole", "severity": "medium",
+      "description": "Pothole on IIM Road near Vastrapur Lake.",
+      "ward": "W21", "wardName": "Vastrapur", "department": "roads",
+      "lat": 23.0362, "lng": 72.5275, "approxLocation": false,
+      "photoUrl": "/media/seed/pothole.svg", "afterPhotoUrl": "/media/seed/pothole-fixed.svg",
+      "status": "Completed", "crew": "Road Crew R-7",
+      "timeline": [
+        { "stage": "Filed", "at": "2026-10-15T08:00:00.000Z", "by": "Riya Shah", "note": "Filed via Nagar Lens AR" },
+        { "stage": "Acknowledged", "at": "2026-10-15T12:00:00.000Z", "by": "AMC Officer", "note": "" },
+        { "stage": "Assigned", "at": "2026-10-16T05:30:00.000Z", "by": "AMC Officer", "note": "Road Crew R-7 assigned" },
+        { "stage": "In progress", "at": "2026-10-18T06:00:00.000Z", "by": "Road Crew R-7", "note": "Patching" },
+        { "stage": "Completed", "at": "2026-10-19T13:10:00.000Z", "by": "AMC Officer", "note": "After photo uploaded" }
+      ],
+      "plusOnes": 2, "supporters": [],
+      "createdAt": "2026-10-15T08:00:00.000Z", "expectedBy": "2026-10-22T08:00:00.000Z",
+      "completedAt": "2026-10-19T13:10:00.000Z", "verification": null
+    },
+    {
+      "id": "AMC-W18-0455", "user": "Kabir Mehta", "issueType": "pothole", "severity": "low",
+      "description": "Small pothole outside Paldi bus stand.",
+      "ward": "W18", "wardName": "Paldi", "department": "roads",
+      "lat": 23.0098, "lng": 72.5642, "approxLocation": false,
+      "photoUrl": "/media/seed/pothole.svg", "afterPhotoUrl": "/media/seed/pothole-fixed.svg",
+      "status": "Verified", "crew": "Road Crew R-3",
+      "timeline": [
+        { "stage": "Filed", "at": "2026-10-10T07:20:00.000Z", "by": "Kabir Mehta", "note": "Filed via Nagar Lens AR" },
+        { "stage": "Acknowledged", "at": "2026-10-10T10:00:00.000Z", "by": "AMC Officer", "note": "" },
+        { "stage": "Assigned", "at": "2026-10-11T05:00:00.000Z", "by": "AMC Officer", "note": "Road Crew R-3 assigned" },
+        { "stage": "In progress", "at": "2026-10-12T06:00:00.000Z", "by": "Road Crew R-3", "note": "" },
+        { "stage": "Completed", "at": "2026-10-13T12:00:00.000Z", "by": "AMC Officer", "note": "After photo uploaded" },
+        { "stage": "Verified", "at": "2026-10-13T12:01:00.000Z", "by": "Nagar Lens AI", "note": "Before/after check passed: road surface patched" }
+      ],
+      "plusOnes": 4, "supporters": [],
+      "createdAt": "2026-10-10T07:20:00.000Z", "expectedBy": "2026-10-17T07:20:00.000Z",
+      "completedAt": "2026-10-13T12:00:00.000Z",
+      "verification": { "fixed": true, "confidence": 0.93, "explanation": "Road surface patched, no pothole visible.", "at": "2026-10-13T12:01:00.000Z", "by": "Nagar Lens AI" }
+    },
+    {
+      "id": "AMC-W10-0456", "user": "Priya Desai", "issueType": "garbage", "severity": "medium",
+      "description": "Construction debris and garbage dumped on Sola Road footpath.",
+      "ward": "W10", "wardName": "Naranpura", "department": "swm",
+      "lat": 23.0601, "lng": 72.5532, "approxLocation": false,
+      "photoUrl": "/media/seed/garbage.svg", "afterPhotoUrl": null,
+      "status": "Acknowledged", "crew": null,
+      "timeline": [
+        { "stage": "Filed", "at": "2026-10-23T05:50:00.000Z", "by": "Priya Desai", "note": "Filed via Nagar Lens AR" },
+        { "stage": "Acknowledged", "at": "2026-10-23T09:30:00.000Z", "by": "AMC Officer", "note": "" }
+      ],
+      "plusOnes": 0, "supporters": [],
+      "createdAt": "2026-10-23T05:50:00.000Z", "expectedBy": "2026-10-25T05:50:00.000Z", "verification": null
+    }
+  ],
+  "users": [
+    {
+      "name": "Riya Shah", "homeWard": "W12", "points": 478, "badges": [], "title": "Active Citizen",
+      "stats": { "potholeCompleted": 4, "verifications": 3 }, "inbox": [], "awardLog": []
+    },
+    {
+      "name": "Kabir Mehta", "homeWard": "W12", "points": 495, "badges": ["Clean Street Champion", "Ward Guardian"],
+      "title": "🏆 Highest Civic Honour",
+      "stats": { "garbageCompleted": 5, "potholeCompleted": 1, "verifications": 6 }, "inbox": [], "awardLog": []
+    },
+    {
+      "name": "Priya Desai", "homeWard": "W22", "points": 310, "badges": ["Light Keeper", "Ward Guardian"],
+      "title": "Ward Champion",
+      "stats": { "streetlightCompleted": 3, "verifications": 2 }, "inbox": [], "awardLog": []
+    },
+    {
+      "name": "Arjun Rathod", "homeWard": "W34", "points": 85, "badges": ["Flood Watch", "Ward Guardian"],
+      "title": "Ward Champion",
+      "stats": { "waterloggingReports": 1 }, "inbox": [], "awardLog": []
+    }
+  ]
+}

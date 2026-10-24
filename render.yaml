@@ -1,0 +1,17 @@
+# One-click deploy on Render: https://render.com/deploy?repo=https://github.com/vivchinu/nagar-lens
+# Builds the Vite client, then Express serves the app + API over HTTPS on one URL.
+services:
+  - type: web
+    name: nagar-lens
+    runtime: node
+    plan: free
+    buildCommand: npm --prefix server install && npm --prefix client install && npm --prefix client run build
+    startCommand: node server/index.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: GEMINI_API_KEY
+        sync: false # paste your key in the Render dashboard when asked
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
