@@ -1,5 +1,7 @@
 # 📍 Nagar Lens — AR Civic Complaint Agent
 
+**Live:** https://nagar-lens.web.app (Firebase Hosting) · API: https://nagar-lens.onrender.com (Render)
+
 **Build·Hack·Garba · GDG Ahmedabad · "Agents: Civic Complaint Agent" track**
 
 Point your phone at a pothole → the agent works out the issue → picks the AMC ward and department → files a ticket with a tracking ID → drops a 3D pin in the real world. Ask "What's the status?" by voice or text, watch it go to **Completed → Verified ✓**, and earn badges and civic honour titles.
@@ -19,6 +21,10 @@ npm run dev            # Express on :3001 + Vite HTTPS on :5173
 Open **https://localhost:5173** on the laptop. Without a key, the app runs in **offline mode**: a rule-based agent calls the same tools, so the demo never dead-ends. Image recognition is guessed in this mode.
 
 Get a key from https://aistudio.google.com/apikey. The default model is `gemini-2.5-flash`; override it with `GEMINI_MODEL`.
+
+## Deploy on Firebase Hosting (front end) + Render (API) — what the live demo uses
+
+No billing needed. In Cloud Shell: `git clone https://github.com/vivchinu/nagar-lens && cd nagar-lens && bash deploy-firebase.sh <project-id> https://<your-api>.onrender.com`. It builds the client with `VITE_API_BASE` pointing at the API and deploys to `https://nagar-lens.web.app` (or `<project-id>.web.app` if the site name is taken). Render free tier: after a push, use **Manual Deploy → Deploy latest commit** if the service isn't linked to GitHub.
 
 ## Deploy on Firebase Hosting + Cloud Run
 
